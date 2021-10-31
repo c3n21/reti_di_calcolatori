@@ -1,6 +1,8 @@
 # Glossario
 Link -> collegamento tra due nodi della rete
 Virtual Connection
+Protocol Data Unit (PDU): frame che vengono scambiate da due link layer di due stazioni diverse.
+Protocol Control Information (PCI): un header (?) dei dati che specifica che protocollo usare tra due peer dello stesso livello.
 
 # Circuit-switched
 I terminali prima di poter comunicare devono essere collegati fisicamente da un `local switching office`.
@@ -34,3 +36,19 @@ Quando i dati sono stati trasmessi, il VC viene chiuso ed i VCI vengono rilascia
 Il servizio offerto da una rete `connectionless` si dice `best-effort`.
 Non è richiesta una connessione per la comunicazione tra due terminali; per fare ciò però nell'header c'è bisogno dell'indirizzo completo di source e destination per permettere ai PSE di fare routing del pacchetto sul link giusto.
 In una rete connectionless quindi si usare il termine `router` più che `packet-switching exchange`.
+
+# 1.5.1 Internet protocol stack
+## Network layer
+Network layer viene usato l'`Internet protocol (IP)`.
+IP è un servizio `connectionless`, `best-effort` che coinvolge la formattazione delle PDU per il trasferimento in `packets`, ognuno dei quali ha un unico indirizzo di rete per la sorgente ed il destinatario.
+IP non si interessa del contenuto dei pacchetti ma di come trasferire la totalità dei pacchetti sulla rete.
+
+## Transport layer
+Transport layer ha il ruolo di provvedere per gli applicativi di un servizio di scambio di dati indipendente dalla rete.
+Vengono usati il `Transmission Control Protocol (TCP)` che offre un servizio `reliable`, e lo `User Datagram Protocol (UDP)` per un servizio `best effort`.
+Inoltre ha anche il compito di dirigere il flusso delle PDU delle application all'applicazione corrispettiva dell'`application layer`.
+
+## Application layer
+Questo layer offre all'utente l'accesso alle applicazioni Internet. Ad ogni applicazione è associato un `application protocol` che
+offre all'utente il servizio corrispondente.
+Si definisce quindi `protocol stack` di Internet l'insieme di protocolli, solitamente chiamato anche `TCP/IP protocol stack`.
